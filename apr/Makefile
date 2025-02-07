@@ -1,13 +1,16 @@
-APR=apr-1.5.2
-APRUTIL=apr-util-1.5.4
+# APR=apr-1.5.2
+# APRUTIL=apr-util-1.5.4
+APR=apr-1.7.5
+APRUTIL=apr-util-1.6.3
+APRREPO=https://archive.apache.org/dist/apr
 
 all:$(APR) $(APRUTIL) buildapr
 
 $(APR):
-	wget http://apache.techartifact.com/mirror//apr/$(APR).tar.gz
+	wget $(APRREPO)/$(APR).tar.gz
 	tar -xf $(APR).tar.gz
 $(APRUTIL):
-	wget http://apache.techartifact.com/mirror//apr/$(APRUTIL).tar.gz
+	wget $(APRREPO)/$(APRUTIL).tar.gz
 	tar -xf $(APRUTIL).tar.gz
 
 buildapr:
@@ -19,4 +22,3 @@ buildapr:
 clean:
 	rm -rf apr-*
 	rm -rf aprutil-*
-	
